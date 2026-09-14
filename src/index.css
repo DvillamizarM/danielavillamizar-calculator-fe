@@ -1,0 +1,175 @@
+:root {
+  --bg: #f4f5f7;
+  --surface: #ffffff;
+  --text: #1a1c1e;
+  --muted: #6b7280;
+  --border: #e2e4e8;
+  --accent: #2563eb;
+  --accent-text: #ffffff;
+  --error: #dc2626;
+  --error-bg: #fef2f2;
+
+  color-scheme: light dark;
+  font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #111318;
+    --surface: #1b1e24;
+    --text: #f2f3f5;
+    --muted: #9aa0aa;
+    --border: #2b2f38;
+    --error-bg: #3a1414;
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+}
+
+.app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem 1rem;
+}
+
+.app h1 {
+  font-size: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.calculator {
+  width: 100%;
+  max-width: 360px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 1.25rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+
+.display {
+  min-height: 3.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 0.75rem 1rem;
+  margin-bottom: 1rem;
+  border-radius: 10px;
+  background: var(--bg);
+  font-size: 1.75rem;
+  font-variant-numeric: tabular-nums;
+  overflow-x: auto;
+}
+
+.display__result {
+  word-break: break-all;
+}
+
+.display__error {
+  font-size: 1rem;
+  color: var(--error);
+  text-align: right;
+}
+
+.keypad__operations {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.keypad__op {
+  padding: 0.6rem 0.25rem;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: var(--bg);
+  color: var(--text);
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.keypad__op--active {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--accent-text);
+}
+
+.keypad__inputs {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.keypad__field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  font-size: 0.8rem;
+  color: var(--muted);
+}
+
+.keypad__field input {
+  font-size: 1.1rem;
+  padding: 0.6rem 0.75rem;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text);
+}
+
+.keypad__actions {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 0.5rem;
+}
+
+.keypad__actions button {
+  padding: 0.75rem;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  font-size: 1.1rem;
+  cursor: pointer;
+}
+
+.keypad__clear {
+  background: var(--bg);
+  color: var(--text);
+}
+
+.keypad__equals {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--accent-text);
+}
+
+.keypad__equals:disabled {
+  opacity: 0.6;
+  cursor: default;
+}
+
+@media (max-width: 400px) {
+  .calculator {
+    max-width: 100%;
+  }
+
+  .keypad__operations {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0.4rem;
+  }
+
+  .keypad__op {
+    padding: 0.5rem 0.1rem;
+    font-size: 0.9rem;
+  }
+}
